@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "nothing-filter"
+version = "0.1.0"
+description = ""
+authors = ["maxomm <max.warsinke@googlemail.com>"]
+readme = "README.md"
+packages = [{include = "nothing_filter"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pillow = "^9.3.0"
+numpy = "^1.23.4"
+streamlit = "^1.14.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
