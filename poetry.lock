@@ -313,7 +313,7 @@ numpy = ">=1.16.6"
 
 [[package]]
 name = "pydeck"
-version = "0.8.0b4"
+version = "0.8.0"
 description = "Widget for deck.gl maps"
 category = "main"
 optional = false
@@ -602,8 +602,8 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "f6e9698a9027cb07aaf045336f1b13655643c7ba44d3ed3c8ec21e29351f016b"
+python-versions = "3.10.8"
+content-hash = "72cfd3a27bae8b0fb8536fc5a125c505a2fd78ff91c76a8b17d97bf02fb44fa7"
 
 [metadata.files]
 altair = [
@@ -924,8 +924,8 @@ pyarrow = [
     {file = "pyarrow-10.0.0.tar.gz", hash = "sha256:b153b05765393557716e3729cf988442b3ae4f5567364ded40d58c07feed27c2"},
 ]
 pydeck = [
-    {file = "pydeck-0.8.0b4-py2.py3-none-any.whl", hash = "sha256:714ec23fb21e47171e4ae350668ca8a1552bae29de94e5e749bd595a60100a09"},
-    {file = "pydeck-0.8.0b4.tar.gz", hash = "sha256:103f303ef0a8f18edb10444d8136b901514779e84e340a86218e67427559e6d2"},
+    {file = "pydeck-0.8.0-py2.py3-none-any.whl", hash = "sha256:a8fa7757c6f24bba033af39db3147cb020eef44012ba7e60d954de187f9ed4d5"},
+    {file = "pydeck-0.8.0.tar.gz", hash = "sha256:07edde833f7cfcef6749124351195aa7dcd24663d4909fd7898dbd0b6fbc01ec"},
 ]
 pygments = [
     {file = "Pygments-2.13.0-py3-none-any.whl", hash = "sha256:f643f331ab57ba3c9d89212ee4a2dabc6e94f117cf4eefde99a0574720d14c42"},
