@@ -7,8 +7,8 @@ authors = ["maxomm <max.warsinke@googlemail.com>"]
 [tool.poetry.dependencies]
 python = "3.10.8"
 pillow = "^9.3.0"
-numpy = "^1.23.4"
 streamlit = "^1.14.0"
+numpy = "^1.23.4"
 
 
 [tool.poetry.group.dev.dependencies]
