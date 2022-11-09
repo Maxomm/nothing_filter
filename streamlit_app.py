@@ -17,7 +17,8 @@ fixed_image = ImageOps.exif_transpose(image)
 converted_image = fixed_image.convert('RGB')
 new_img = np.asarray(converted_image)
 
-with st.expander("Change Parameters"):
+col1, col2 = st.columns(2)
+with col1:
     SLICES = st.slider("Slices", 1, 20, 8) + 1
     FILTER_STR = st.slider("Spread", 0.0, 1.0, 0.6, 0.1)
     FACTOR = st.slider("Gradient", 0.80, 1.00, 0.90, 0.01)
@@ -55,8 +56,8 @@ for i in range(SLICES):
 
 
 im = Image.fromarray(np.uint8(combined))
-
-st.image(im)
+with col2:
+    st.image(im)
 
 im.save("output." + img_format)
 
