@@ -5,10 +5,8 @@ import streamlit as st
 st.title("Nothing Filter")
 
 col1, col2 = st.columns(2)
-with col1:
-    uploaded_file = st.file_uploader(
-        "image", type=["jpg", "png"], accept_multiple_files=False
-    )
+uploaded_file = st.file_uploader("", type=["jpg", "png"], accept_multiple_files=False
+)
 image = (
     Image.open(uploaded_file) if uploaded_file is not None else Image.open("input.jpg")
 )
