@@ -59,9 +59,9 @@ im = Image.fromarray(np.uint8(combined))
 with col2:
     st.image(im)
 
-im.save("output." + img_format)
+    im.save("output." + img_format)
 
-with col1:
+
     with open("output." + img_format, "rb") as img:
         btn = st.download_button(
             label="Download",
