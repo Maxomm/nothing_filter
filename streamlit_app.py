@@ -4,12 +4,13 @@ import streamlit as st
 
 st.title("Nothing Filter")
 
-col1, col2 = st.columns(2)
+
 uploaded_file = st.file_uploader("", type=["jpg", "png"], accept_multiple_files=False
 )
 image = (
     Image.open(uploaded_file) if uploaded_file is not None else Image.open("input.jpg")
 )
+
 
 img_format = str(image.format).lower()
 
@@ -17,7 +18,7 @@ fixed_image = ImageOps.exif_transpose(image)
 converted_image = fixed_image.convert('RGB')
 new_img = np.asarray(converted_image)
 
-
+col1, col2 = st.columns(2)
 with col1:
     with st.expander("Change Parameters"):
         SLICES = st.slider("Slices", 1, 20, 8) + 1
