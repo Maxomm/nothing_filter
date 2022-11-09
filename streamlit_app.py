@@ -4,9 +4,11 @@ import streamlit as st
 
 st.title("Nothing Filter")
 
-uploaded_file = st.file_uploader(
-    "image", type=["jpg", "png"], accept_multiple_files=False
-)
+col1, col2 = st.columns(2)
+with col1:
+    uploaded_file = st.file_uploader(
+        "image", type=["jpg", "png"], accept_multiple_files=False
+    )
 image = (
     Image.open(uploaded_file) if uploaded_file is not None else Image.open("input.jpg")
 )
@@ -17,11 +19,12 @@ fixed_image = ImageOps.exif_transpose(image)
 converted_image = fixed_image.convert('RGB')
 new_img = np.asarray(converted_image)
 
-col1, col2 = st.columns(2)
+
 with col1:
-    SLICES = st.slider("Slices", 1, 20, 8) + 1
-    FILTER_STR = st.slider("Spread", 0.0, 1.0, 0.6, 0.1)
-    FACTOR = st.slider("Gradient", 0.80, 1.00, 0.90, 0.01)
+    with st.expander("Change Parameters):
+        SLICES = st.slider("Slices", 1, 20, 8) + 1
+        FILTER_STR = st.slider("Spread", 0.0, 1.0, 0.6, 0.1)
+        FACTOR = st.slider("Gradient", 0.80, 1.00, 0.90, 0.01)
 
 height, width = fixed_image.height, fixed_image.width
 slice_width = width / SLICES
@@ -59,6 +62,7 @@ im = Image.fromarray(np.uint8(combined))
 with col2:
     st.image(im)
 
+with col1:                     
     im.save("output." + img_format)
 
 
