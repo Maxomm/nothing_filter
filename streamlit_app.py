@@ -61,10 +61,11 @@ with col2:
 
 im.save("output." + img_format)
 
-with open("output." + img_format, "rb") as img:
-    btn = st.download_button(
-        label="Download",
-        data=img,
-        file_name="nothing_filter." + img_format,
-        mime="image/png",
-    )
+with col1:
+    with open("output." + img_format, "rb") as img:
+        btn = st.download_button(
+            label="Download",
+            data=img,
+            file_name="nothing_filter." + img_format,
+            mime="image/png",
+        )
