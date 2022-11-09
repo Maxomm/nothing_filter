@@ -56,11 +56,7 @@ for i in range(SLICES):
 
 im = Image.fromarray(np.uint8(combined))
 
-col1, col2 = st.columns(2)
-with col1:
-    st.image(fixed_image)
-with col2:
-    st.image(im)
+st.image(im)
 
 im.save("output." + img_format)
 
