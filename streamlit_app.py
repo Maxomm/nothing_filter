@@ -4,17 +4,23 @@ import streamlit as st
 
 st.title("Nothing Filter")
 
-uploaded_file = st.file_uploader("image", type="jpg", accept_multiple_files=False)
+uploaded_file = st.file_uploader(
+    "image", type=["jpg", "png"], accept_multiple_files=False
+)
 image = (
     Image.open(uploaded_file) if uploaded_file is not None else Image.open("input.jpg")
 )
 
-fixed_image = ImageOps.exif_transpose(image)
-new_img = np.asarray(fixed_image)
+img_format = str(image.format).lower()
 
-SLICES = st.slider("Slices", 1, 20, 8) + 1
-FILTER_STR = st.slider("Spread", 0.0, 1.0, 0.6, 0.1)
-FACTOR = st.slider("Gradient", 0.90, 1.00, 0.90, 0.01)
+fixed_image = ImageOps.exif_transpose(image)
+converted_image = fixed_image.convert('RGB')
+new_img = np.asarray(converted_image)
+
+with st.expander("Change Parameters"):
+    SLICES = st.slider("Slices", 1, 20, 8) + 1
+    FILTER_STR = st.slider("Spread", 0.0, 1.0, 0.6, 0.1)
+    FACTOR = st.slider("Gradient", 0.80, 1.00, 0.90, 0.01)
 
 height, width = fixed_image.height, fixed_image.width
 slice_width = width / SLICES
@@ -56,12 +62,12 @@ with col1:
 with col2:
     st.image(im)
 
-im.save("output.jpg")
+im.save("output." + img_format)
 
-with open("output.jpg", "rb") as img:
+with open("output." + img_format, "rb") as img:
     btn = st.download_button(
         label="Download",
         data=img,
-        file_name="nothing_filter.jpg",
+        file_name="nothing_filter." + img_format,
         mime="image/png",
     )
