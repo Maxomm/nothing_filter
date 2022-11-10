@@ -41,7 +41,7 @@ if __name__ == "__main__":
         label_visibility="hidden",
     )
 
-    image = Image.open(up_file) if up_file is not None else Image.open("input.jpeg")
+    image = Image.open(up_file) if up_file is not None else Image.open("demo_in.jpeg")
 
     img_format = str(image.format).lower()
     fixed_image = ImageOps.exif_transpose(image)
