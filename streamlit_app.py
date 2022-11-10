@@ -1,4 +1,5 @@
 from PIL import Image, ImageOps
+import io
 import numpy as np
 import streamlit as st
 
@@ -64,11 +65,10 @@ if __name__ == "__main__":
     with right_column:
         st.image(image)
 
-        image.save("output." + img_format)
-        with open("output." + img_format, "rb") as img:
-            btn = st.download_button(
-                label="Download",
-                data=img,
-                file_name="nothing_filter." + img_format,
-                mime="image/png",
-            )
+        buf = io.BytesIO()
+        image.save(buf, format=img_format)
+        st.download_button(
+            label="Download",
+            data=buf.getvalue(),
+            file_name="nothing_filter." + img_format,
+        )
