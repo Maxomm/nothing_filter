@@ -5,7 +5,7 @@ import streamlit as st
 st.title("Nothing Filter")
 
 
-uploaded_file = st.file_uploader("",type=["jpg", "png"], accept_multiple_files=False
+uploaded_file = st.file_uploader(label="", type=["jpg", "png"], accept_multiple_files=False, label_visibility="hidden"
 )
 image = (
     Image.open(uploaded_file) if uploaded_file is not None else Image.open("input.jpg")
@@ -15,7 +15,7 @@ image = (
 img_format = str(image.format).lower()
 
 fixed_image = ImageOps.exif_transpose(image)
-converted_image = fixed_image.convert('RGB')
+converted_image = fixed_image.convert("RGB")
 new_img = np.asarray(converted_image)
 
 col1, col2 = st.columns(2)
@@ -58,13 +58,12 @@ for i in range(SLICES):
 
 
 im = Image.fromarray(np.uint8(combined))
+
 with col2:
     st.image(im)
 
-with col1:                     
+with col1:
     im.save("output." + img_format)
-
-
     with open("output." + img_format, "rb") as img:
         btn = st.download_button(
             label="Download",
